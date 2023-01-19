@@ -11,6 +11,11 @@
 		17C6CE6F297213B0002CBA66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6CE6E297213B0002CBA66 /* ContentView.swift */; };
 		17C6CE71297213B1002CBA66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17C6CE70297213B1002CBA66 /* Assets.xcassets */; };
 		17C6CE74297213B1002CBA66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17C6CE73297213B1002CBA66 /* Preview Assets.xcassets */; };
+		17C6CE7B297213C6002CBA66 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 17C6CE7A297213C6002CBA66 /* Inceptionv3.mlmodel */; };
+		17C6CE8329786315002CBA66 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6CE8229786315002CBA66 /* ImagePicker.swift */; };
+		17C6CE8929789085002CBA66 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6CE8829789085002CBA66 /* ContentViewModel.swift */; };
+		17C6CE8B2978BE00002CBA66 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6CE8A2978BE00002CBA66 /* Model.swift */; };
+		17C6CE8D2978C95C002CBA66 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6CE8C2978C95C002CBA66 /* Prediction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		17C6CE6E297213B0002CBA66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		17C6CE70297213B1002CBA66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17C6CE73297213B1002CBA66 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		17C6CE7A297213C6002CBA66 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
+		17C6CE8229786315002CBA66 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		17C6CE8829789085002CBA66 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		17C6CE8A2978BE00002CBA66 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		17C6CE8C2978C95C002CBA66 /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +63,12 @@
 			children = (
 				17C6CE6C297213B0002CBA66 /* SeafoodApp.swift */,
 				17C6CE6E297213B0002CBA66 /* ContentView.swift */,
+				17C6CE8829789085002CBA66 /* ContentViewModel.swift */,
+				17C6CE8A2978BE00002CBA66 /* Model.swift */,
+				17C6CE8C2978C95C002CBA66 /* Prediction.swift */,
+				17C6CE8229786315002CBA66 /* ImagePicker.swift */,
 				17C6CE70297213B1002CBA66 /* Assets.xcassets */,
+				17C6CE7A297213C6002CBA66 /* Inceptionv3.mlmodel */,
 				17C6CE72297213B1002CBA66 /* Preview Content */,
 			);
 			path = Seafood;
@@ -138,7 +153,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				17C6CE6F297213B0002CBA66 /* ContentView.swift in Sources */,
+				17C6CE8329786315002CBA66 /* ImagePicker.swift in Sources */,
+				17C6CE7B297213C6002CBA66 /* Inceptionv3.mlmodel in Sources */,
+				17C6CE8B2978BE00002CBA66 /* Model.swift in Sources */,
+				17C6CE8D2978C95C002CBA66 /* Prediction.swift in Sources */,
 				17C6CE6D297213B0002CBA66 /* SeafoodApp.swift in Sources */,
+				17C6CE8929789085002CBA66 /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +290,7 @@
 				DEVELOPMENT_TEAM = 749Q737TF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Libera o uso ai";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +320,7 @@
 				DEVELOPMENT_TEAM = 749Q737TF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Libera o uso ai";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
