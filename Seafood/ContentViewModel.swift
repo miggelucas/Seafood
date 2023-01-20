@@ -16,6 +16,14 @@ class ContentViewModel: ObservableObject {
         case empty, loading, content
     }
     
+    enum ActiveSheet: Identifiable {
+        case imagePicker, settings
+        
+        var id: Int {
+            hashValue
+        }
+    }
+    
     var state : State {
         guard let _ = image else { return .empty }
         if isLoading {
@@ -26,29 +34,43 @@ class ContentViewModel: ObservableObject {
     }
     
     @Published var image : Image?
-    @Published var showingImagePicker = false
+    @Published var inputImage: UIImage? {
+        didSet {
+            processImage(withImage: inputImage!)
+        }
+    }
+    @Published var activeSheet: ActiveSheet?
     @Published var isLoading = false
-    @Published var inputImage: UIImage?
+    @Published var cameraMode: Bool = true
     @Published var navigationTitle: String = ""
+    
     @Published var predictions: [Prediction] = []
 
+    var mode: UIImagePickerController.SourceType {
+        if cameraMode {
+            return .camera
+        } else {
+            return .photoLibrary
+        }
+    }
     
+    func sheetDismissed() {
+        activeSheet = nil
+    }
     
-    func sheetdismissed() {
-        guard let inputImage = inputImage else { return }
-        self.image = Image(uiImage: inputImage)
+    func captureImageTapped() {
+        activeSheet = .imagePicker
     }
     
     func gearButtonTapped() {
-        navigationTitle = "Loading..."
-        if let safeImage = inputImage {
-            processImage(withImage: safeImage)
-        }
+        activeSheet = .settings
     }
 
     
     func processImage(withImage image: UIImage) {
-        self.isLoading = true
+        self.image = Image(uiImage: inputImage!)
+        isLoading = true
+        navigationTitle = "Loading ..."
         
         Model.predict(for: image) { results in
             
