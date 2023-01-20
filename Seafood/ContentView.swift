@@ -49,22 +49,25 @@ struct ContentView: View {
             }
             .navigationTitle(viewModel.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
-            .sheet(item: $viewModel.activeSheet, onDismiss: viewModel.sheetDismissed) { item in
-                switch item {
+            .sheet(item: $viewModel.activeSheet, onDismiss: viewModel.sheetDismissed) { sheetMode in
+                switch sheetMode {
                     
                 case .imagePicker:
                     ImagePicker(userPickedImage: $viewModel.inputImage, mode: viewModel.mode)
                     
                 case .settings:
-                    List {
-                        VStack(alignment: .center) {
-                            Text("Configurações")
+                    NavigationStack {
+                        List {
+                            Picker("Modo de seleção da Imagem", selection: $viewModel.modeSelection) {
+                                ForEach(pickerMode.allCases) { mode in
+                                    Text(mode.rawValue)
+                                }
+                            }
+                            
                         }
-                        Toggle("Usar camera", isOn: $viewModel.cameraMode)
-                        
+                        .navigationTitle("Configurações")
                     }
                 }
-                
             }
             
             .toolbar {

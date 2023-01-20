@@ -9,6 +9,12 @@ import Foundation
 import SwiftUI
 import Vision
 
+enum pickerMode: String, Identifiable, CaseIterable {
+    case camera = "Camera"
+    case photoLibrary = "Fotos"
+    
+    var id: Self { self }
+}
 
 class ContentViewModel: ObservableObject {
     
@@ -34,20 +40,20 @@ class ContentViewModel: ObservableObject {
     }
     
     @Published var image : Image?
+    @Published var activeSheet: ActiveSheet?
+    @Published var isLoading = false
+    @Published var navigationTitle: String = ""
     @Published var inputImage: UIImage? {
         didSet {
             processImage(withImage: inputImage!)
         }
     }
-    @Published var activeSheet: ActiveSheet?
-    @Published var isLoading = false
-    @Published var cameraMode: Bool = true
-    @Published var navigationTitle: String = ""
     
     @Published var predictions: [Prediction] = []
-
+    @Published var modeSelection: pickerMode = .camera
+    
     var mode: UIImagePickerController.SourceType {
-        if cameraMode {
+        if self.modeSelection == .camera {
             return .camera
         } else {
             return .photoLibrary
@@ -65,7 +71,7 @@ class ContentViewModel: ObservableObject {
     func gearButtonTapped() {
         activeSheet = .settings
     }
-
+    
     
     func processImage(withImage image: UIImage) {
         self.image = Image(uiImage: inputImage!)
@@ -75,7 +81,7 @@ class ContentViewModel: ObservableObject {
         Model.predict(for: image) { results in
             
             self.predictions = Model.getNamesAndPrecision(for: results)
-
+            
             self.isLoading = false
             self.navigationTitle = "Done"
         }
@@ -84,3 +90,5 @@ class ContentViewModel: ObservableObject {
     }
     
 }
+
+
